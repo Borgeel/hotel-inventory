@@ -1,1 +1,32 @@
-<p>rooms works!</p>
+<h1>Welcome to {{ hotelName }}</h1>
+<div [hidden]="hideRooms">
+  Number of rooms:
+  <span [innerText]="numberOfRooms"></span>
+</div>
+
+<div *ngIf="rooms.availableRooms > 0">
+  {{ rooms.availableRooms }} available rooms
+  <button (click)="toggle()">
+    {{ hideRooms ? "Show Rooms" : "Hide rooms" }}
+  </button>
+  <br />
+  <div>
+    Rooms List:
+    <table>
+      <tr>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Room Price</th>
+        <th>Amenities</th>
+        <th>Check In</th>
+      </tr>
+      <tr *ngFor="let room of roomList">
+        <td>{{ room.roomNumber }}</td>
+        <td>{{ room.roomType }}</td>
+        <td>{{ room.price }}</td>
+        <td>{{ room.amenities }}</td>
+        <td>{{ room.checkInTime }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
